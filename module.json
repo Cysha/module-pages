@@ -1,0 +1,24 @@
+{
+    "name": "Pages",
+    "alias": "pages",
+    "description": "Pages Module for Phoenix CMS",
+    "authors": [
+        { "name": "xLink (Dan Aldridge)", "email": "xLink@cybershade.org" }
+    ],
+    "keywords": [
+        "first-party"
+    ],
+    "version": "v1.0.0",
+    "active": 1,
+    "order": 100,
+    "providers": [
+        "Cms\\Modules\\Pages\\Providers\\PagesModuleServiceProvider",
+        "Cms\\Modules\\Pages\\Providers\\PagesEventsProvider",
+        "Cms\\Modules\\Pages\\Providers\\PagesRoutingProvider"
+    ],
+    "aliases": {
+    },
+    "files": [
+        "helpers.php"
+    ]
+}
