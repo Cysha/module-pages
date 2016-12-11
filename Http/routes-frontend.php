@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'pages'], function (Router $router) {
-    $router->get('/', ['as' => 'pxcms.pages.index', 'uses' => 'PagesController@getIndex']);
-});
+$router->get('kitchen-sink', ['uses' => 'PagesController@kitchenSink']);
+$router->get('{pages_page_slug}', ['as' => 'pxcms.pages.viewpage', 'uses' => 'PagesController@getPage']);
