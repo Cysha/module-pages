@@ -1,8 +1,9 @@
 <?php
 
 /**
- * TODO: add a link here to the docs for config/config.php
+ * TODO: add a link here to the docs for config/config.php.
  */
 return [
     'table-prefix' => 'pages_',
+
 ];

@@ -55,8 +55,8 @@ class Page extends BaseModel
 
         // if ($this->content !== null) {
             $data['content'] = [
-                'view' => $this->getSection('view') ?: null,
                 //'php' => $this->getSection('php') ?: null,
+                'view' => $this->getSection('view') ?: null,
                 'css' => $this->getSection('css') ?: null,
                 'js' => $this->getSection('js') ?: null,
                 'keywords' => $this->getSection('keywords') ?: null,
