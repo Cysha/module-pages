@@ -4,7 +4,6 @@ namespace Cms\Modules\Pages\Providers;
 
 use Cms\Modules\Core\Providers\CmsRoutingProvider;
 use Cms\Modules\Pages\Models\Page;
-use Illuminate\Routing\Router;
 
 class PagesRoutingProvider extends CmsRoutingProvider
 {
@@ -34,11 +33,11 @@ class PagesRoutingProvider extends CmsRoutingProvider
         return __DIR__.'/../Http/routes-api.php';
     }
 
-    public function boot(Router $router)
+    public function boot()
     {
-        parent::boot($router);
+        parent::boot();
 
-        $router->bind('pages_page_slug', function ($slug) {
+        Route::bind('pages_page_slug', function ($slug) {
            return with(new Page())
                 ->with('content')
                 ->where('slug', $slug)

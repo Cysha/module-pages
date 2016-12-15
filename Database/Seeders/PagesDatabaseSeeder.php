@@ -1,14 +1,14 @@
-<?php namespace Cms\Modules\Pages\Database\Seeders;
+<?php
+
+namespace Cms\Modules\Pages\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class PagesTableSeeder extends Seeder
+class PagesDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
@@ -16,5 +16,4 @@ class PagesTableSeeder extends Seeder
 
         //$this->call(__NAMESPACE__.'\');
     }
-
 }
