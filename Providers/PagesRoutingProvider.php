@@ -3,6 +3,7 @@
 namespace Cms\Modules\Pages\Providers;
 
 use Cms\Modules\Core\Providers\CmsRoutingProvider;
+use Illuminate\Support\Facades\Route;
 use Cms\Modules\Pages\Models\Page;
 
 class PagesRoutingProvider extends CmsRoutingProvider
