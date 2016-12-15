@@ -20,7 +20,7 @@ class Content extends BaseModel
 
     public function author()
     {
-        $authModel = config('auth.model');
+        $authModel = config('cms.auth.config.user_model');
 
         return $this->belongsTo($authModel);
     }
