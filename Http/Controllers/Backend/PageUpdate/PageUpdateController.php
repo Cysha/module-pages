@@ -67,8 +67,6 @@ class PageUpdateController extends BaseController
                     'author_id' => $request->user()->id,
                     'section' => $section,
                     'content' => $content,
-                    'version' => 1,
-                    'published' => true,
                 ]);
             }
 

@@ -8,10 +8,9 @@ class Content extends BaseModel
 {
     public $table = 'page_content';
     public $fillable = [
-        'page_id', 'author_id', 'section', 'content', 'version', 'published', 'view_count',
+        'page_id', 'author_id', 'section', 'content', 'view_count',
     ];
     public $casts = [
-        'published' => 'boolean',
         'view_count' => 'integer',
     ];
     public $touches = [

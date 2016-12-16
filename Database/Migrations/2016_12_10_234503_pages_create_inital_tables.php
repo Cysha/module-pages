@@ -22,6 +22,7 @@ class PagesCreateInitalTables extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('layout')->nullable()->default(null);
+            $table->boolean('active')->default(false);
 
             $table->timestamps();
         });
@@ -33,8 +34,6 @@ class PagesCreateInitalTables extends Migration
 
             $table->string('section')->nullable()->default(null);
             $table->text('content')->nullable()->default(null);
-            $table->string('version')->default('1.0');
-            $table->boolean('published')->default(false);
             $table->integer('view_count')->default(0);
             $table->timestamps();
         });

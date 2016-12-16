@@ -8,6 +8,9 @@ class Page extends BaseModel
     public $fillable = [
         'title', 'slug', 'layout',
     ];
+    public $casts = [
+        'active' => 'boolean',
+    ];
     protected $identifiableName = 'title';
     protected $link = [
         'route' => 'pxcms.pages.viewpage',
@@ -48,6 +51,7 @@ class Page extends BaseModel
             'title' => (string) $this->title,
             'slug' => (string) $this->getOriginal('slug'),
             'layout' => (string) $this->layout,
+            'active' => (bool) $this->active,
 
             'links' => [
                 'self' => (string) $this->makeLink(true),

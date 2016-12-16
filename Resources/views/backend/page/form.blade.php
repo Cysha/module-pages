@@ -25,6 +25,14 @@
                             {!! Former::text('title') !!}
                             {!! Former::text('slug')->prepend(str_replace(request()->path(), '', request()->url())) !!}
                             {!! Former::select('layout')->options($layouts)->label('Page Layout')->noKeys() !!}
+                            {!! Former::radio('active')
+                                ->radios([
+                                    'Yes' => ['value' => 'true'],
+                                    'No' => ['value' => 'false']
+                                ])
+                                ->label('Page Active?')
+                                ->inline()
+                            !!}
                         </div>
                     </div>
 

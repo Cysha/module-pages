@@ -39,7 +39,7 @@ class PageManager
                 'collection' => function () {
                     $model = 'Cms\Modules\Pages\Models\Page';
 
-                    return $model::all();
+                    return $model::with('content');
                 },
             ],
 
@@ -60,7 +60,41 @@ class PageManager
                 'slug' => [
                     'th' => 'Slug',
                     'tr' => function ($model) {
-                        return sprintf('<a href="%s">%s</a>', $model->slug, $model->slug);
+                        return sprintf('<a href="%s">%s</a>', '/'.$model->slug, $model->slug);
+                    },
+                    'orderable' => true,
+                    'searchable' => true,
+                    'width' => '15%',
+                ],
+
+                'active' => [
+                    'th' => 'Active',
+                    'tr' => function ($model) {
+                        return $model->active === true
+                            ? '<div class="label label-success">Active</div>'
+                            : '<div class="label label-danger">Not Active</div>';
+                    },
+                    'tr-class' => 'text-center',
+                    'width' => '5%',
+                ],
+
+                'sections' => [
+                    'th' => 'Sections',
+                    'tr' => function ($model) {
+                        $sections = config('cms.pages.editor.sections');
+                        $colors = config('cms.pages.editor.section_colors');
+
+                        $labels = [];
+                        foreach ($sections as $section) {
+                            $section = strtolower($section);
+                            $content = $model->getSection($section);
+                            \Log::info([$model->id, $section, $content]);
+                            if ($content !== false) {
+                                $labels[] = sprintf('<div class="label label-%s">%s</div>', array_get($colors, $section, 'default'), $section);
+                            }
+                        }
+
+                        return implode(' ', $labels);
                     },
                     'orderable' => true,
                     'searchable' => true,
@@ -71,14 +105,14 @@ class PageManager
                     'th' => 'Actions',
                     'tr' => function ($model) {
                         $return = [
+                            [
+                                'btn-title' => 'Edit',
+                                'btn-link' => route('admin.pages.update', $model->id),
+                                'btn-class' => 'btn btn-warning btn-xsprimary btn-labeled',
+                                'btn-icon' => 'fa fa-pencil',
+                                'hasPermission' => 'update@pages_backend',
+                            ],
                         ];
-                            // [
-                            //     'btn-title' => 'Edit Category',
-                            //     'btn-link' => route('backend.forum.category.update', $model->id),
-                            //     'btn-class' => 'btn btn-warning btn-xs btn-labeled',
-                            //     'btn-icon' => 'fa fa-pencil',
-                            //     'hasPermission' => 'update@forum_backend',
-                            // ],
 
                         return $return;
                     },
