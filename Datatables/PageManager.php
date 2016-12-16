@@ -17,12 +17,12 @@ class PageManager
                     'text' => '<i class="fa fa-info-circle"></i> You can manage your Pages from here.',
                 ],
                 'header' => [
-                    /*[
+                    [
                         'btn-text' => 'Create Page',
                         'btn-route' => 'admin.pages.create',
                         'btn-class' => 'btn btn-info btn-labeled',
                         'btn-icon' => 'fa fa-plus',
-                    ],*/
+                    ],
                 ],
             ],
 
