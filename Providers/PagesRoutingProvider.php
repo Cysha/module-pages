@@ -42,6 +42,7 @@ class PagesRoutingProvider extends CmsRoutingProvider
             return with(new Page())
                 ->with('content')
                 ->where('slug', $slug)
+                ->where('active', true)
                 ->firstOrFail();
         });
 
@@ -49,6 +50,7 @@ class PagesRoutingProvider extends CmsRoutingProvider
             return with(new Page())
                 ->with('content')
                 ->where('id', $id)
+                ->where('active', true)
                 ->firstOrFail();
         });
     }
