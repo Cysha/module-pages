@@ -17,12 +17,14 @@ class Page extends BaseModel
     public function content()
     {
         return $this->hasMany(__NAMESPACE__.'\Content')
-            ->where('published', true)
             ->groupBy('section');
     }
 
     public function getSection($part)
     {
+        if (!isset($this->relations['content'])) {
+            $this->load('content');
+        }
         $sections = $this->getRelation('content');
 
         $section = $sections->filter(function ($section) use ($part) {
@@ -31,7 +33,12 @@ class Page extends BaseModel
             }
         });
 
-        return $section->count() === 0 ? false : $section->first()->transform();
+        return $section->count() === 0 ? false : $section->first();
+    }
+
+    public function getSlugAttribute()
+    {
+        return $this->getOriginal('slug');
     }
 
     public function transform()
@@ -39,7 +46,7 @@ class Page extends BaseModel
         $data = [
             'id' => (int) $this->id,
             'title' => (string) $this->title,
-            'slug' => (string) $this->slug,
+            'slug' => (string) $this->getOriginal('slug'),
             'layout' => (string) $this->layout,
 
             'links' => [
@@ -53,7 +60,7 @@ class Page extends BaseModel
             'updated_at' => date_array($this->updated_at),
         ];
 
-        // if ($this->content !== null) {
+        if ($this->content !== null) {
             $data['content'] = [
                 //'php' => $this->getSection('php') ?: null,
                 'view' => $this->getSection('view') ?: null,
@@ -62,7 +69,7 @@ class Page extends BaseModel
                 'keywords' => $this->getSection('keywords') ?: null,
                 'description' => $this->getSection('description') ?: null,
             ];
-        // }
+        }
 
         return $data;
     }

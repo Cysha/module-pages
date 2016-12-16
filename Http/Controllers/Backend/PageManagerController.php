@@ -2,10 +2,10 @@
 
 namespace Cms\Modules\Pages\Http\Controllers\Backend;
 
-use Cms\Modules\Admin\Traits\DataTableTrait;
 use Cms\Modules\Pages\Datatables\PageManager;
+use Cms\Modules\Admin\Traits\DataTableTrait;
 
-class ManagerController extends BaseController
+class PageManagerController extends BaseController
 {
     use DataTableTrait;
 

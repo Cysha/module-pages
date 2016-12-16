@@ -39,9 +39,16 @@ class PagesRoutingProvider extends CmsRoutingProvider
         parent::boot();
 
         Route::bind('pages_page_slug', function ($slug) {
-           return with(new Page())
+            return with(new Page())
                 ->with('content')
                 ->where('slug', $slug)
+                ->firstOrFail();
+        });
+
+        Route::bind('pages_page_id', function ($id) {
+            return with(new Page())
+                ->with('content')
+                ->where('id', $id)
                 ->firstOrFail();
         });
     }

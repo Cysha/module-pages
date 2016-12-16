@@ -24,10 +24,26 @@ class PagesController extends BaseController
             });
         }
 
+        // add the custom js/css too
+        if (($section = $page->getSection('css')) !== false) {
+            $this->theme->asset()->writeStyle('page-style', array_get($section, 'content', null), 'css');
+        }
+
+        if (($section = $page->getSection('js')) !== false) {
+            $this->theme->asset()->container('footer')->writeScript('page-script', array_get($section, 'content', null), 'js');
+        }
+
         $page = $page->transform();
 
         return $this->setView('frontend.view-page', compact('page'));
     }
+
+    /*public function getHome()
+    {
+        $this->setLayout('col-1');
+
+        return $this->setView('home', [], 'module');
+    }*/
 
     public function kitchenSink()
     {

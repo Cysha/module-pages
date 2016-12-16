@@ -10,7 +10,7 @@
     ],
     "version": "v1.0.0",
     "active": 1,
-    "order": 100,
+    "order": 9999,
     "providers": [
         "Cms\\Modules\\Pages\\Providers\\PagesModuleServiceProvider",
         "Cms\\Modules\\Pages\\Providers\\PagesEventsProvider",

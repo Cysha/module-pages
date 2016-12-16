@@ -1,4 +1,7 @@
 
-{!! array_get($page, 'content.view.content') !!}
+@set($content, array_get($page, 'content.view', null))
 
-{!! dump($page) !!}
+@if ($content !== null)
+{!! $content->getOriginal('content') !!}
+@endif
+

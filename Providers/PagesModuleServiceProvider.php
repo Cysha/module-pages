@@ -1,10 +1,11 @@
-<?php namespace Cms\Modules\Pages\Providers;
+<?php
+
+namespace Cms\Modules\Pages\Providers;
 
 use Cms\Modules\Core\Providers\BaseModuleProvider;
 
 class PagesModuleServiceProvider extends BaseModuleProvider
 {
-
     /**
      * Register the defined middleware.
      *
@@ -26,7 +27,7 @@ class PagesModuleServiceProvider extends BaseModuleProvider
     ];
 
     /**
-     * Register view composers
+     * Register view composers.
      *
      * @var array
      */
@@ -36,21 +37,19 @@ class PagesModuleServiceProvider extends BaseModuleProvider
     ];
 
     /**
-     * Register repository bindings to the IoC
+     * Register repository bindings to the IoC.
      *
      * @var array
      */
     protected $bindings = [
-
+        'Cms\Modules\Pages\Repositories\Page' => ['RepositoryInterface' => 'EloquentRepository'],
     ];
 
     /**
-     * Register Auth related stuffs
+     * Register Auth related stuffs.
      */
     public function register()
     {
         parent::register();
-
     }
-
 }
