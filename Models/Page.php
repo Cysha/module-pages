@@ -6,7 +6,7 @@ class Page extends BaseModel
 {
     public $table = 'pages';
     public $fillable = [
-        'title', 'slug', 'layout',
+        'title', 'slug', 'layout', 'active',
     ];
     public $casts = [
         'active' => 'boolean',
