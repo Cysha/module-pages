@@ -35,6 +35,7 @@ class BackendUpdatePageRequest extends Request
             'title' => 'required|string',
             'slug' => ['required', 'string', Rule::unique($tblPrefix.'pages')->ignore($pageId, 'id')],
             'layout' => 'required|string|in:'.implode(',', $layouts),
+            'active' => 'required|boolean',
         ];
 
         foreach ($sections as $section) {

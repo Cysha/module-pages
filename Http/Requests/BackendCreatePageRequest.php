@@ -32,6 +32,7 @@ class BackendCreatePageRequest extends Request
             'title' => 'required',
             'slug' => ['required', 'string', Rule::unique($tblPrefix.'pages')],
             'layout' => 'required|string|in:'.implode(',', $layouts),
+            'active' => 'required|boolean',
         ];
     }
 }
