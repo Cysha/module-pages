@@ -53,5 +53,12 @@ class PagesRoutingProvider extends CmsRoutingProvider
                 ->where('active', true)
                 ->firstOrFail();
         });
+
+        Route::bind('backend_pages_page_id', function ($id) {
+            return with(new Page())
+                ->with('content')
+                ->where('id', $id)
+                ->firstOrFail();
+        });
     }
 }

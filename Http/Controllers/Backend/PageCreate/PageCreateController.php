@@ -41,7 +41,7 @@ class PageCreateController extends BaseController
                 ->withErrors($createdPage->errors());
         }
 
-        return redirect(route('admin.pages.edit', $createdPage->id))
+        return redirect(route('admin.pages.update', $createdPage->id))
             ->withInfo('Page created successfully.');
     }
 }

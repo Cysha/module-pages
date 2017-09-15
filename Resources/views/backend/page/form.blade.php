@@ -27,8 +27,8 @@
                             {!! Former::select('layout')->options($layouts)->label('Page Layout')->noKeys() !!}
                             {!! Former::radio('active')
                                 ->radios([
-                                    'Yes' => ['value' => 'true'],
-                                    'No' => ['value' => 'false']
+                                    'Yes' => ['value' => '1'],
+                                    'No' => ['value' => '0']
                                 ])
                                 ->label('Page Active?')
                                 ->inline()

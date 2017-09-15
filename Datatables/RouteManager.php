@@ -65,13 +65,23 @@ class RouteManager
                     },
                     'orderable' => true,
                     'searchable' => true,
-                    'width' => '3%',
+                    'width' => '10%',
                 ],
 
                 'uri' => [
                     'th' => 'URL',
                     'tr' => function ($model) {
-                        return sprintf('<span title="%s" data-toggle="tooltip">%s</span>', $model->name, $model->uri);
+                        return $model->uri;
+                    },
+                    'orderable' => true,
+                    'searchable' => true,
+                    'width' => '20%',
+                ],
+
+                'name' => [
+                    'th' => 'Route Name',
+                    'tr' => function ($model) {
+                        return $model->name;
                     },
                     'orderable' => true,
                     'searchable' => true,
@@ -79,9 +89,17 @@ class RouteManager
                 ],
 
                 'actionName' => [
-                    'th' => 'Action Name',
+                    'th' => 'Class Action',
                     'tr' => function ($model) {
-                        return $model->actionName;
+
+                        $actionName = explode('@', $model->actionName);
+                        $class = $actionName[0];
+                        $method = $actionName[1] ?? '';
+
+
+                        $className = explode('\\', $class);
+                        $className = last($className);
+                        return sprintf('<span title="%2$s" data-toggle="tooltip">%1$s@%3$s</span>', $className, $class, $method);
                     },
                     'orderable' => true,
                     'searchable' => true,
